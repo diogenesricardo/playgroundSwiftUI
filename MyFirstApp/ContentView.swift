@@ -12,35 +12,22 @@ struct ContentView: View {
         VStack(spacing: 20) {
             HStack() {
                 Spacer()
-                ZStack(alignment: .top) {
+                ZStack(alignment: .bottomTrailing) {
                     Image("xburguer")
                         .resizable()
-                        .frame(width: 350, height: 300)
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
+                        .frame(width: 250, height: 250)
                             ZStack(){
                                 Circle()
                                     .fill(.red)
-                                    .frame(width: 150, alignment: .center)
+                                    .frame(width: 100, alignment: .center)
                                 VStack {
                                     Text("R$ 19,90")
-                                        .font(.title)
                                     Text("HOJE")
-                                        .font(.title)
                                 }
                                 //Circulo com borda tracejada sem preenchimento
                             }
                             .padding(5)
-                        }
-                    }
-                    
                 }
-//                .padding()
-                .frame(width: 350)
-
-                
             }
             .frame(maxWidth: .infinity)
             
@@ -58,14 +45,14 @@ struct ContentView: View {
             HStack {
                 Image("xburguer")
                     .resizable()
-                    .frame(height: 200)
+                    .frame(height: 100)
                 VStack {
                     Image("xburguer")
                         .resizable()
-                        .frame(height: 100)
+                        .frame(height: 50)
                     Image("xburguer")
                         .resizable()
-                        .frame(height: 100)
+                        .frame(height: 50)
                 }
             }
             .frame(maxWidth: .infinity)
@@ -80,21 +67,30 @@ struct ContentView: View {
                     .background(.white)
                 Spacer()
             }
-            
-            ScrollView {
+                
+            ScrollView{
                 HStack{
-                    ForEach(0..<10) { item in
-                        VStack{
-                            Image("xburguer")
-                                .resizable()
-                                .frame(height: 50)
-                            Text("X Code \(item)")
-                            Button("COMPRAR") {
-                                
+                    ForEach(0..<5) { item in
+                            ZStack{
+                                Rectangle()
+                                    .opacity(0.01)
+                                    .frame(height: 200)
+                                    
+                                VStack{
+                                    Image("xburguer")
+                                        .resizable()
+                                        .frame(height: 50)
+                                    Text("X Code \(item)")
+                                    Button("COMPRAR") {
+                                        
+                                    }
+                                }
                             }
-                        }
+                            .background(.white)
+                            .clipShape(RoundedCorners(corners: [.bottomLeft, .topRight], radius: 30))
                     }
                 }
+                .padding()
             }
         }
         .frame(
@@ -104,6 +100,20 @@ struct ContentView: View {
             maxHeight: .infinity
             )
         .background(.yellow)
+    }
+}
+
+struct RoundedCorners: Shape {
+    var corners: UIRectCorner
+    var radius: CGFloat
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        return Path(path.cgPath)
     }
 }
 
