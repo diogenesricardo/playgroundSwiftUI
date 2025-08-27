@@ -22,9 +22,21 @@ struct ContentView: View {
                                     .frame(width: 100, alignment: .center)
                                 VStack {
                                     Text("R$ 19,90")
-                                    Text("HOJE")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
+                                    Text("H  O  J  E")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.bold)
                                 }
-                                //Circulo com borda tracejada sem preenchimento
+                                Circle()
+                                    .stroke(
+                                        Color.white,
+                                        style: StrokeStyle(
+                                            lineWidth: 2,
+                                            dash: [5, 3]
+                                        )
+                                    )
+                                    .frame(width: 90, height: 100)
                             }
                             .padding(5)
                 }
@@ -37,6 +49,8 @@ struct ContentView: View {
                     .padding(.trailing, 32)
                     .padding(.leading, 16)
                     .frame(width: .infinity, height: 50)
+                    .foregroundColor(.orange)
+                    .fontWeight(.bold)
                     .background(.white)
             }
             .frame(width: .infinity)
@@ -64,7 +78,9 @@ struct ContentView: View {
                     .padding(.trailing, 16)
                     .padding(.leading, 32)
                     .frame(width: .infinity, height: 50)
-                    .background(.white)
+                    .foregroundColor(.orange)
+                    .fontWeight(.bold)
+                    .background(.black)
                 Spacer()
             }
                 
