@@ -83,30 +83,42 @@ struct ContentView: View {
                     .background(.black)
                 Spacer()
             }
-                
-            ScrollView{
-                HStack{
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 15) {
                     ForEach(0..<5) { item in
-                            ZStack{
-                                Rectangle()
-                                    .opacity(0.01)
-                                    .frame(height: 200)
+                        ZStack{
+                            Rectangle()
+                                .opacity(0.01)
+                                .frame(width: 150, height: 200)
+                            VStack{
+                                Image("xburguer")
+                                    .resizable()
+                                    .frame(width: 100, height: 80)
                                     
-                                VStack{
-                                    Image("xburguer")
-                                        .resizable()
-                                        .frame(height: 50)
-                                    Text("X Code \(item)")
-                                    Button("COMPRAR") {
-                                        
-                                    }
+                                Text("X Code \(item)")
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 8)
+                                    .foregroundColor(.red)
+                                    .fontWeight(.bold)
+                                Button("COMPRAR")
+                                {
+                                    
                                 }
+                                .frame(width: 130,height: 40)
+                                .background(.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                                
                             }
-                            .background(.white)
-                            .clipShape(RoundedCorners(corners: [.bottomLeft, .topRight], radius: 30))
+                            
+                        }
+                        .background()
+                        .clipShape(RoundedCorners(corners: [.bottomLeft, .topRight], radius: 30))
+                        
                     }
                 }
-                .padding()
+                .padding(.horizontal)
             }
         }
         .frame(
